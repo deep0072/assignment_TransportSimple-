@@ -1,0 +1,45 @@
+name: full stack ci cd pipeline
+
+on:
+  pull request:
+    branches:
+      - master
+    push:
+      branches:
+        - master
+
+job:
+  build:
+    name: Build and Test full stack application
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: action/setup-python@v4
+        with:
+          python-version: '3.12.3'
+
+      - name: Set up React js
+        uses: action/setup-node@v3
+        with:
+          node-version: '23.5.0'
+      
+      - name: install python dependecies
+        run: python install -r requirements.txt
+      
+      - name: Install react dependencies
+        run: |
+          cd frontend
+          npm install
+      
+      - name: build frontend
+        run: |
+          cd frontend
+          npm run build
+
+      
+
+      
+
