@@ -5,10 +5,10 @@ on:
     branches:
       - master
   push:
-      branches:
-        - master
+    branches:
+      - master
 
-job:
+jobs:
   build:
     name: Build and Test full stack application
     runs-on: ubuntu-latest
