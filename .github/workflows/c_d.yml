@@ -27,11 +27,13 @@ jobs:
           node-version: '20.x'
       
       - name: install python dependecies
-        run: pip install -r requirements.txt
+        run: |
+          cd quore_clone/quore_clone
+          pip install -r requirements.txt
       
       - name: Install react dependencies
         run: |
-          cd frontend
+          cd frontend/frontend
           npm install
       
       - name: build frontend
