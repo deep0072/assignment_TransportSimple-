@@ -31,7 +31,7 @@ jobs:
           cd quore_clone/quore_clone
           python -m pip install psycopg2-binary
           pip install -r requirements.txt
-          python manage.py migrate
+         
       
       - name: Install react dependencies
         run: |
