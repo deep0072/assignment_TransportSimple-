@@ -4,7 +4,7 @@ on:
   pull_request:
     branches:
       - master
-    push:
+  push:
       branches:
         - master
 
@@ -17,17 +17,17 @@ job:
       - uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: action/setup-python@v4
+        uses: actions/setup-python@v4
         with:
           python-version: '3.12.3'
 
       - name: Set up React js
-        uses: action/setup-node@v3
+        uses: actions/setup-node@v3
         with:
-          node-version: '23.5.0'
+          node-version: '20.x'
       
       - name: install python dependecies
-        run: python install -r requirements.txt
+        run: pip install -r requirements.txt
       
       - name: Install react dependencies
         run: |
