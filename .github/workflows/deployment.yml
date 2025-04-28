@@ -56,3 +56,23 @@ jobs:
           echo "Attempting to pull backend image..."
           docker pull ${{ secrets.DOCKER_USERNAME }}/assignment-transportsimple-backend:latest
           echo "Verification pulls completed."
+      
+      - name: deploying to server 🚀
+        uses: appleboy/ssh-action@master
+        with:
+          #Your server's IP address.
+          host: ${{ secrets.REMOTE_HOST }}
+          #Your server's username
+          username: ${{ secrets.REMOTE_USER }}
+          #Your server's password
+          password : ${{ secrets.REMOTE_PASS }}
+          port: 22
+          script : |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/assignment-transportsimple-frontend:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/assignment-transportsimple-backend:latest
+            sudo docker stop ${{ secrets.DOCKER_USERNAME }}/assignment-transportsimple-frontend || true
+            sudo docker stop ${{ secrets.DOCKER_USERNAME }}/assignment-transportsimple-backend || true
+            sudo docker rm ${{ secrets.DOCKER_USERNAME }}/assignment-transportsimple-frontend || true
+            sudo docker rm ${{ secrets.DOCKER_USERNAME }}/assignment-transportsimple-backend || true
+            sudo docker run -d --name quora_frontend -p 5173:5173 ${{ secrets.DOCKER_USERNAME }}/assignment-transportsimple-frontend:latest
+            sudo docker run -d --name quora_frontend -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/assignment-transportsimple-backend:latest
