@@ -25,9 +25,9 @@ jobs:
         uses: docker/build-push-action@v5 # Use latest version
         with:
           # Relative path to the directory containing frontend Dockerfile and source
-          context: /assignment_TransportSimple-/frontend/frontend
+          context: ./frontend/frontend
           # Relative path to the frontend Dockerfile from the repo root
-          file: /assignment_TransportSimple-/frontend/frontend/Dockerfile # Ensure 'DockerFile' casing matches your actual filename
+          file: ./frontend/frontend/Dockerfile # Ensure 'DockerFile' casing matches your actual filename
           push: true
           # Define distinct tags for the frontend image
           tags: |
@@ -39,9 +39,9 @@ jobs:
         uses: docker/build-push-action@v5 # Use latest version
         with:
           # Relative path to the directory containing backend Dockerfile and source
-          context: /assignment_TransportSimple-/quore_clone/quore_clone
+          context: ./quore_clone/quore_clone
           # Relative path to the backend Dockerfile from the repo root
-          file: /assignment_TransportSimple-/quore_clone/quore_clone/Dockerfile # Ensure 'Dockerfile' casing matches your actual filename
+          file: ./quore_clone/quore_clone/Dockerfile # Ensure 'Dockerfile' casing matches your actual filename
           push: true
           # Define distinct tags for the backend image
           tags: |
