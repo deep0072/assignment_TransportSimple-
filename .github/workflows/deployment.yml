@@ -22,7 +22,7 @@ jobs:
           context: /assignment_TransportSimple-/frontend/frontend
           file: /assignment_TransportSimple-/frontend/frontend/Dockerfile
           push: true
-          tags: deep0072/docker-full-stack:latest/frontend
+          tags: deep0072/docker-full-stack:latest .
       
       - name: Build and Push backend image 
         uses: docker/build-push-action@v2
@@ -30,7 +30,7 @@ jobs:
          context: /assignment_TransportSimple-/quore_clone/quore_clone
          file: /assignment_TransportSimple-/quore_clone/quore_clone/Dockerfile
          push: true
-         tags: deep0072/docker-full-stack:latest/backend
+         tags: deep0072/docker-full-stack:latest 
       - name: verify Pushed Image
         run: |
          docker pull deep0072/docker-full-stack:latest/backend
