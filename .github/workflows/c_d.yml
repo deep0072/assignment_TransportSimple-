@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      #checkout and pull repo
       - uses: actions/checkout@v3
 
       - name: Set up Python
